@@ -43,17 +43,12 @@ mapper/       → Entity ↔ DTO conversion
 ### ✅ Product APIs
 
 * Create Product
-* Get All Products
-* Get Product by ID
-* Update Product
-* Delete Product
+
 
 ### ✅ Category APIs
 
 * Create Category
-* Get All Categories
-* Update Category
-* Delete Category
+
 
 ---
 
