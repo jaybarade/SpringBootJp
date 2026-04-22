@@ -7,6 +7,8 @@ import com.jpcode.productlsit.entity.Product;
 public class ProductMapper {
     //entity to dto
     //toproductDTO
+
+    //ENTITY TO DTO
     public  static ProductDto toProductdto(Product product){
         return  new ProductDto(
                 product.getId(),
@@ -18,7 +20,6 @@ public class ProductMapper {
     }
 
     // DTO TO ENTITY
-
     public  static  Product toProductEntity(ProductDto productDto, Category category){
         Product product = new Product();
        product.setName(productDto.getName());
