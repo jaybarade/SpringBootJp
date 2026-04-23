@@ -37,10 +37,14 @@ public class ProductController {
     }
 
 //    //update product
-//    @PutMapping("/{id}")//id to help find product and update
-//    public ProductDto updateProduct(@PathVariable Long id, @RequestBody ProductDto upproductDto) {  // upproductdto new data
-//
-//
-//    }
+    @PutMapping("/{id}")//id to help find product and update
+    public ProductDto updateProduct(@PathVariable Long id, @RequestBody ProductDto upproductDto) {  // upproductdto new data
+        return  productService.updateProduct(id,upproductDto);
+    }
+
+    @DeleteMapping("/{id}")
+    public  String deleteproduct(@PathVariable Long id){
+        return productService.deleteProduct(id);
+    }
 
 }

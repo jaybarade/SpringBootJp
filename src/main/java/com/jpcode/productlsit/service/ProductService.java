@@ -4,6 +4,7 @@ package com.jpcode.productlsit.service;
 import com.jpcode.productlsit.dto.ProductDto;
 import com.jpcode.productlsit.entity.Category;
 import com.jpcode.productlsit.entity.Product;
+import com.jpcode.productlsit.exception.CategoryNotFoundException;
 import com.jpcode.productlsit.mapper.ProductMapper;
 import com.jpcode.productlsit.repository.CategoryRepository;
 import com.jpcode.productlsit.repository.ProductRepository;
@@ -26,15 +27,12 @@ public class ProductService {
          */
         // check categoryid is available in DB
        Category category=  categoryRepository.findById(productDto.getCategoryid()).orElseThrow(()->
-                new RuntimeException("This category not allow")
-        );
+                 new CategoryNotFoundException("Category Not Found!"));
         // DTO NOT SAVE IN DATABASE  DT0->ENTITY
 
        Product product=  ProductMapper.toProductEntity(productDto,category);
        //product are entity and save DB
        product = productRepository.save(product);
-
-
        //Product entity but return Dto
         // change product entity to dto
        ProductDto  newproductdto =  ProductMapper.toProductdto(product);
@@ -68,7 +66,15 @@ public class ProductService {
 
 
 
+
+
+    public  String deleteProduct(Long id){
+        productRepository.deleteById(id);
+        return  "Product "+id +" Delete";
     }
+    }
+
+
 
 
 

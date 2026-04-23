@@ -2,6 +2,7 @@ package com.jpcode.productlsit.controller;
 
 
 import com.jpcode.productlsit.dto.CategoryDto;
+import com.jpcode.productlsit.exception.CategoryAlreadyExitException;
 import com.jpcode.productlsit.service.CategoryService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -18,8 +19,16 @@ public class CategoryController {
 
     //create Category
     @PostMapping("/create_category")
-    public ResponseEntity<CategoryDto> createCategory(@RequestBody CategoryDto categoryDto){
-        return  new ResponseEntity<>(categoryService.createCategory(categoryDto), HttpStatus.CREATED);
+    public ResponseEntity<?> createCategory(@RequestBody CategoryDto categoryDto) {
+//        try  {
+//           CategoryDto saveCategory = categoryService.createCategory(categoryDto);
+//            return  ResponseEntity.status(HttpStatus.CREATED).body(saveCategory);
+//        }catch (CategoryAlreadyExitException ex){
+//            return ResponseEntity.status(HttpStatus.CONFLICT).body(ex.getMessage());
+//        }
+
+        CategoryDto saveCategory = categoryService.createCategory(categoryDto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(saveCategory);
     }
 
     // get all category
