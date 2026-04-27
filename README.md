@@ -10,7 +10,7 @@ A **Spring Boot backend application** implementing a layered architecture with R
 * Spring Boot 3
 * Spring Web
 * Spring Data JPA
-* H2 Database
+* PostgreSQL Database
 * Maven
 * Lombok
 
@@ -39,16 +39,21 @@ mapper/       → Entity ↔ DTO conversion
 ---
 
 ## 📦 Features
-
 ### ✅ Product APIs
 
 * Create Product
-
+* Get All Products
+* Get Product By Id
+* Update Product
+* Delete Product
 
 ### ✅ Category APIs
 
 * Create Category
-
+* Get All Categories
+* Get Category By Id
+* Update Category
+* Delete Category
 
 ---
 
@@ -69,7 +74,9 @@ java -jar target/productlsit-0.0.1-SNAPSHOT.jar
 ## 🌐 Base URL
 
 ```text
-http://localhost:8080
+https://springbootjp.onrender.com/api/categories/get_categorylist
+admin
+1234
 ```
 
 ---
