@@ -7,6 +7,7 @@ import com.jpcode.productlsit.service.CategoryService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,6 +19,7 @@ public class CategoryController {
     private final CategoryService categoryService;
 
     //create Category
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PostMapping("/create_category")
     public ResponseEntity<?> createCategory(@RequestBody CategoryDto categoryDto) {
 //        try  {
@@ -47,6 +49,7 @@ public class CategoryController {
     }
 
     // delete category with product
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @DeleteMapping
     public  String deleteCategory(@RequestParam Long id){
     return categoryService.deleteCategory(id);

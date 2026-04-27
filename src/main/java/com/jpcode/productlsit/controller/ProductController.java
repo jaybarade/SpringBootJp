@@ -4,6 +4,7 @@ package com.jpcode.productlsit.controller;
 import com.jpcode.productlsit.dto.ProductDto;
 import com.jpcode.productlsit.service.ProductService;
 import lombok.AllArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,6 +19,7 @@ public class ProductController {
     private final ProductService productService;
 
     //Create Product
+    @PreAuthorize("hasAuthority('ROLE_SELLER')")
     @PostMapping("/create_product")
     public ProductDto createProduct(@RequestBody ProductDto productDto) {
         return productService.createProduct(productDto);
@@ -42,6 +44,7 @@ public class ProductController {
         return  productService.updateProduct(id,upproductDto);
     }
 
+    @PreAuthorize("hasAuthority('ROLE_SELLER')")
     @DeleteMapping("/{id}")
     public  String deleteproduct(@PathVariable Long id){
         return productService.deleteProduct(id);
